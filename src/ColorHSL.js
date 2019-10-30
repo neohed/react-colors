@@ -32,29 +32,30 @@ class ColorHSL {
             return v1;
         }
 
+        const {h, s, l} = this;
         let red, green, blue;
 
         if (this.s === 0) {
-            red = this.l * 255;
-            green = this.l * 255;
-            blue = this.l * 255;
+            red = l * 255;
+            green = l * 255;
+            blue = l * 255;
         } else {
             let var_1, var_2;
 
-            if (this.l < .5) {
-                var_2 = this.l * (1 + this.s)
+            if (l < .5) {
+                var_2 = l * (1 + s)
             } else {
-                var_2 = this.l + this.s - this.s * this.l
+                var_2 = l + s - s * l
             }
 
-            var_1 = 2 * this.l - var_2;
+            var_1 = 2 * l - var_2;
 
-            red = 255 * h2Rgb(var_1, var_2, this.h + 1 / 3);
-            green = 255 * h2Rgb(var_1, var_2, this.h);
-            blue = 255 * h2Rgb(var_1, var_2, this.h - 1 / 3);
+            red = 255 * h2Rgb(var_1, var_2, h + 1 / 3);
+            green = 255 * h2Rgb(var_1, var_2, h);
+            blue = 255 * h2Rgb(var_1, var_2, h - 1 / 3);
         }
 
-        return new ColorRGB(red + .5, green + .5, blue + .5);
+        return new ColorRGB(Math.round(red), Math.round(green), Math.round(blue));
     };
 
     harmony = (n) => [
@@ -72,15 +73,16 @@ class ColorHSL {
     toComplement = () => new ColorHSL((this.h + 180) % 360, this.s, this.l);
 
     interpolate = (endColour, steps) => {
-        const startColour = this,
+        const {h, s, l} = this;
+        const startColour = new ColorHSL(h, s, l),
             colours = [startColour],
             step = (endColour.l - startColour.l) / steps;
 
         for (let i = 1; i < steps; ++i) {
             colours.push(new ColorHSL(
-                startColour.h,
-                startColour.s,
-                startColour.l + i * step)
+                h,
+                s,
+                l + i * step)
             );
         }
 

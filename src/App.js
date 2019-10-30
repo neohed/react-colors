@@ -1,12 +1,12 @@
 import React from 'react';
-import ColorChart1 from './ColorChart1'
+import ColorChart2 from './ColorChart2'
 import {getColorObjects} from "./colors";
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <ColorChart1 colors={getColorObjects()} />
+      <ColorChart2 colors={getColorObjects()} />
     </div>
   );
 }

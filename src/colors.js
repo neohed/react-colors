@@ -133,7 +133,6 @@ const colors = [
     ['Silver', '#C0C0C0'],
     ['SkyBlue', '#87CEEB'],
     ['SlateBlue', '#6A5ACD'],
-    ['SlateGray', '#708090'],
     ['SlateGrey', '#708090'],
     ['Snow', '#FFFAFA'],
     ['SpringGreen', '#00FF7F'],

@@ -12,11 +12,11 @@ const ColorChart1 = ({colors}) => (
                     key={i}
                     className="box"
                     style={{
-                        backgroundColor: backgroundColor,
-                        color: textColor
+                        color: textColor,
+                        backgroundColor
                     }}
                 >
-                    {colorName} {backgroundColor} {textColor}
+                    {colorName} {backgroundColor}
                 </div>
             })
         }
